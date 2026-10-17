@@ -1,0 +1,27 @@
+# Continuous Integration for the workshop code.
+# Every push or pull request: install dependencies, run every test, fail the check if any test fails.
+# Read it top to bottom — it is just a recipe someone else's computer follows.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pandas pytest
+
+      - name: Run tests
+        run: pytest -q
