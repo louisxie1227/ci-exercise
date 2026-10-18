@@ -47,3 +47,4 @@ def whitespace_blocks(blk, max_competitors=1):
     `blk` is a per-block frame with a `served_providers` count column.
     """
     return blk[blk["served_providers"] <= max_competitors]
+# Testing satellite exclusion
