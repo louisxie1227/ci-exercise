@@ -34,7 +34,6 @@ def served_offers(avail, down_min=100, up_min=20):
     """
     out = avail[
         avail["business_residential_code"].isin(["R", "X"])
-        & ~avail["technology"].isin(SATELLITE)
         & (avail["low_latency"] == LOW_LATENCY)
         & (avail["max_download_speed"] >= down_min)
         & (avail["max_upload_speed"] >= up_min)
